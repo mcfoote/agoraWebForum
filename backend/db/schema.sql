@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS agora_db;
+CREATE DATABASE agora_db;
