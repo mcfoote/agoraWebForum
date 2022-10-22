@@ -1,7 +1,7 @@
-const PORT = process.env.PORT || 3001;
-
 const express = require('express');
 const app = express();
+
+const PORT = process.env.PORT || 3001;
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Agora!');
@@ -9,6 +9,14 @@ app.get('/', (req, res) => {
 
 app.get('/api/boards', (req, res) => {
     res.send(['Programming', 'Gaming', 'Music', 'Video']);
+});
+
+app.get('/api/boards/:id', (req, res) => {
+    res.send(req.params.id);
+});
+
+app.get('/api/boards/:id/threads/:threadId', (req, res) => {
+    res.send(req.query);
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
