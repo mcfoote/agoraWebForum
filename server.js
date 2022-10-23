@@ -26,7 +26,7 @@ app.post('/api/boards', (req, res) => {
         return;
     }
 
-    const board = {
+    let board = {
         id: boards.length + 1,
         name: req.body.name
     };
