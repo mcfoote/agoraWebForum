@@ -37,6 +37,19 @@ app.post('/api/boards', (req, res) => {
 
 });
 
+app.put('api/boards/:id', (req, res) => {
+    let board = boards.find(b => b.id === parseInt(req.params.id));
+    if(!board) res.status(404).send('404: Board not found.');
+
+    if(!req.body.name || req.body.name.length < 3) {
+        res.status(400).send('Name is required and needs a minimum of 3 characters');
+        return;
+    }
+
+    board.name = req.body.name;
+    res.send(course);
+});
+
 app.get('/api/boards/:id', (req, res) => {
     let board = boards.find(b => b.id === parseInt(req.params.id));
     if(!board) res.status(404).send('404: Board not found.');
