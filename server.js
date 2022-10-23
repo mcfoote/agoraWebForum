@@ -21,7 +21,12 @@ app.get('/api/boards', (req, res) => {
 });
 
 app.post('/api/boards', (req, res) => {
-    let board = {
+    if(!req.body.name || req.body.name.length < 3) {
+        res.status(400).send('Name is required and needs a minimum of 3 characters');
+        return;
+    }
+
+    const board = {
         id: boards.length + 1,
         name: req.body.name
     };
