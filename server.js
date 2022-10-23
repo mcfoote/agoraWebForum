@@ -12,10 +12,6 @@ app.get('/api/boards', (req, res) => {
 });
 
 app.get('/api/boards/:id', (req, res) => {
-    res.send(req.params.id);
-});
-
-app.get('/api/boards/:id/threads/:threadId', (req, res) => {
     res.send(req.query);
 });
 
