@@ -27,8 +27,15 @@ User.init(
         password: {
 
         },
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user',
     }
 
 );
 
-Model.exports = User;
+module.exports = User;
