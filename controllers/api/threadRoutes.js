@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const {Thread} = require('../../models');
 
-router.post(, (req, res) => {
+router.post('/boards/:name/:thread_id', (req, res) => {
 
 });
 
-router.delete(, (req, res) => {
+router.delete('/boards/:name/:thread_id', (req, res) => {
 
 });
 
