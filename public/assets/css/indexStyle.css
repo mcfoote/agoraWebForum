@@ -1,3 +1,7 @@
 #aboutBox {
    background-color: darkolivegreen; 
 }
+
+body {
+    background-image:  url("../img/AthenianAgora.jpg");
+}
