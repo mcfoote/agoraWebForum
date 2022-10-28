@@ -24,6 +24,10 @@ app.get('/api/boards', (req, res) => {
     res.send(boards);
 });
 
+app.post('/', (req, res) => {
+    res.send('Got a POST request')
+  });
+  
 app.post('/api/boards', (req, res) => {
     if(!req.body.name || req.body.name.length < 3) {
         res.status(400).send('Name is required and needs a minimum of 3 characters');
