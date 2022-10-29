@@ -1,21 +1,21 @@
 [
     {
-        "id": 0,
+        "id": 1,
         "name": "Programming",
         "description": "A board for the discussion of programming and tech related topics."
     },
     {
-        "id": 1,
+        "id": 2,
         "name": "Gaming",
         "description": "A board for the discussion of programming and tech related topics."
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Music",
         "description": "A board for the discussion of programming and tech related topics."
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "Video",
         "description": "A board for the discussion of programming and tech related topics."
     }

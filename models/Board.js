@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Board extends Model {};
+class Board extends Model {}
 
 Board.init(
     {
@@ -31,7 +31,7 @@ Board.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'board', 
+        modelName: 'board' 
     }
 );
 
