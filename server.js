@@ -7,15 +7,30 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const PORT = process.env.PORT || 3001;
 
+const sess = {
+    secret: 'secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
+
+/*
 const boards = [
     {id: 1, name: 'programming'},
     {id: 2, name: 'gaming'},
     {id: 3, name: 'music'},
     {id: 4, name: 'video'}
 ];
-
+*/
 app.use(express.json());
+app.use(session(sess));
+app.use(express.urlencoded({ extended: true}));
+app.use(routes);
 
+/*
 app.get('/', (req, res) => {
     res.send('Welcome to the Agora!');
 });
@@ -24,9 +39,6 @@ app.get('/api/boards', (req, res) => {
     res.send(boards);
 });
 
-app.post('/', (req, res) => {
-    res.send('Got a POST request')
-  });
   
 app.post('/api/boards', (req, res) => {
     if(!req.body.name || req.body.name.length < 3) {
@@ -57,5 +69,7 @@ app.get('/api/boards/:id', (req, res) => {
     if(!board) res.status(404).send('404: Board not found.');
     res.send(board);
 });
-
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+*/
+sequelize.sync({ force: false}).then(() => {
+    app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+});
