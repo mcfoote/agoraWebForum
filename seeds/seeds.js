@@ -1,18 +1,14 @@
 const sequelize = require('../config/connection.js');
-const {User, Board, Thread, Post} = require('../models');
+//const { User, Board, Thread, Post } = require('../models');
+const Board = require('../models/Board')
 
-const userData = require('./userData.json');
+const boardData = require('./boardData.json');
 
 const seedDatabase = async() => {
 
     await sequelize.sync({ force: true });
 
-    for(const board of boardData) {
-        await Board.create({
-            ...board,
-            
-        });
-    }
+    await Board.bulkCreate(boardData);
 
     process.exit(0);
 };

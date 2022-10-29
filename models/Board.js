@@ -19,6 +19,12 @@ Board.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        /*
+        threads_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        */
     },
     {
         sequelize,
