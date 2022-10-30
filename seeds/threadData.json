@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Welcome to the Programming Board",
+        "thread_description": "This a place for the discussion of programming and tech related topics.",
+        "board_id": 1
+    },
+    {
+        "title": "Welcome to the Gaming Board",
+        "thread_description": "This a place for the discussion of Gaming and related topics.",
+        "board_id": 2
+    },
+    {
+        "title": "Welcome to the Music Board",
+        "thread_description": "This a place for the discussion of Music and related topics.",
+        "board_id": 3
+    },
+    {
+        "title": "Welcome to the Video Board",
+        "thread_description": "This a place for the discussion of Television, Film and Video related topics.",
+        "board_id": 4
+    }
+
+]
