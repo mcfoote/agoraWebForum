@@ -17,4 +17,29 @@ router.post('/', async (req, res) => {
 
 });
 
+router.delete('/:id', async(req, res) => {
+
+    try{
+        const threadData = await Thread.destroy({
+            where: {
+               id: req.params.id,
+            },
+        });
+
+        if(!threadData) {
+            res.status(404).json({message: 'No board found with matching id.'});
+
+            return;
+        }
+
+        res.status(200).json(threadData);
+
+    } catch(err) {
+
+        res.status(500).json(err);
+
+    }
+
+});
+
 module.exports = router;
