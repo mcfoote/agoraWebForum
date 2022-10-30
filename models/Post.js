@@ -11,7 +11,7 @@ Post.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        postContent: {
+        post_content: {
             type: DataTypes.STRING,
             allowNull: false,
         },

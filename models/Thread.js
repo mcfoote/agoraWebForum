@@ -11,11 +11,11 @@ Thread.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        name:{
+        title:{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        description: {
+        thread_description: {
             type: DataTypes.STRING,
             allowNull: false,
         },

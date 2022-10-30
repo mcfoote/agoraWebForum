@@ -4,6 +4,7 @@ const Thread = require('./Thread');
 const Post = require('./Post');
 
 Board.hasMany(Thread, {
+    onDelete: 'CASCADE',
     foreignKey: 'board_id'
 });
 
@@ -12,7 +13,7 @@ Thread.belongsTo(Board, {
 });
 
 Thread.hasMany(Post, {
-    //onDelete: 'CASCADE',
+    onDelete: 'CASCADE',
     foreignKey: 'thread_id'
 });
 
