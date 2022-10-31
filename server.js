@@ -26,15 +26,6 @@ app.use(cors({
 }));
 app.use(routes);
 
-
-/*
-app.put('/api/boards/:id', (req, res) => {
-    let board = boards.find(b => b.id === parseInt(req.params.id));
-    if(!board) res.status(404).send('404: Board not found.');
-    board.name = req.body.name;
-    res.send(board);
-});
-*/
 sequelize.sync({ force: false}).then(() => {
     app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
 });
