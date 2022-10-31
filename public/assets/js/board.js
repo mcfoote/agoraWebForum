@@ -17,12 +17,31 @@ switch(boardName) {
     case '|Video|':
         threadIdRoute = baseRoute + '4';
         break;
-        
+
 }
 
-function buildBoard() {
+async function buildBoard() {
 
     let threads = [];
 
-    fetch(threadIdRoute)
+    const response = await fetch(threadIdRoute);
+    threads = await response.json();
+    console.log(threads);
+
+    for(let i = 0; i < threads.length; i++) {
+        cardSpace.innerHTML +=`
+       <div class="card text-bg-secondary m-3" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="Placeholder img">
+            <div class="card-body">
+                <h5 class="card-title">${threads[i].title}</h5>
+                <p class="card-text">${threads[i].thread_description}</p>
+                <a href="#" class="btn btn-success">Open Thread</a>
+            </div>
+        </div>
+        `
+    }
+
+    
 }
+
+buildBoard();
