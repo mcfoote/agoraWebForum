@@ -17,6 +17,14 @@ router.post('/', async (req, res) => {
 
 });
 
+router.get('/:boardId', async (req, res) => {
+
+    const threadData = await Thread.findAll({ where: {boardId: req.params.boardId}});
+
+    res.send(threadData);
+
+});
+
 router.delete('/:id', async(req, res) => {
 
     try{
