@@ -4,6 +4,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3001;
 
 const sess = {
@@ -20,7 +21,11 @@ const sess = {
 app.use(express.json());
 app.use(session(sess));
 app.use(express.urlencoded({ extended: true}));
+app.use(cors({
+  origin: '*'
+}));
 app.use(routes);
+
 
 /*
 app.put('/api/boards/:id', (req, res) => {
