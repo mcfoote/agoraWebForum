@@ -43,9 +43,9 @@ async function buildBoard() {
                 <h5 class="card-title">${threads[i].title}</h5>
                 <p class="card-text">${threads[i].thread_description}</p>
                     <a class="btn btn-success" data-bs-toggle="offcanvas" href="#${canvasName}" role="button" aria-controls="offcanvasExample">Open Thread</a>
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="${canvasName}" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="${canvasName}" aria-labelledby="offcanvasExampleLabel">
                             <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">${threads[i].title}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body" id="${postCanvasName}">
@@ -61,9 +61,10 @@ async function buildBoard() {
         let threadIdRoute = postBaseRoute + threadID;
         const response = await fetch(threadIdRoute);
         posts = await response.json();
+        console.log(posts);
 
         for(j = 0; j < posts.length; j++) {
-            postCanvas.innerHTML = `
+            postCanvas.innerHTML += `
             <div>
                 ${posts[j].post_content}
             </div>
