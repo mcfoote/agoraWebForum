@@ -1,8 +1,8 @@
 const loginBtn = document.getElementById('loginSubmit');
 const accountCreateBtn = document.getElementById('accountSubmit');
 
-loginBtn.addEventListener('click', login());
-accountCreateBtn.addEventListener('click', registerAccount());
+loginBtn.addEventListener('click', login);
+accountCreateBtn.addEventListener('click', registerAccount);
 
 async function registerAccount(){
     const userName = document.getElementById('inputUserName2').value;
@@ -12,9 +12,8 @@ async function registerAccount(){
     console.log(userEmail);
     console.log(userPass);
 
-    await fetch('http://localhost:3001/api/users', {
+    const response = await fetch('http://localhost:3001/api/users', {
         method: 'POST',
-        //mode: 'cors',
         body: {
             user_name: userName,
             email: userEmail,
@@ -29,9 +28,8 @@ async function login(){
     console.log(userName);
     console.log(userPass);
 
-    await fetch('http://localhost:3001/api/users/login', {
+    const response = await fetch('http://localhost:3001/api/users/login', {
         method: 'POST',
-        //mode: 'no-cors',
         body: {
             user_name: userName,
             password: userPass,
