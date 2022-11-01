@@ -5,6 +5,9 @@ const postBaseRoute = 'http://localhost:3001/api/posts/'
 let boardIdRoute;
 let boardID;
 
+const threadPostBtn = document.getElementById('threadPostBtn');
+threadPostBtn.addEventListener('click', postThread)
+
 switch(boardName) {
 
     case '|Programming|':
@@ -24,6 +27,8 @@ switch(boardName) {
 
 boardIdRoute = baseRoute + boardID;
 
+
+
 async function buildBoard() {
 
     let threads = [];
@@ -31,6 +36,8 @@ async function buildBoard() {
     const response = await fetch(boardIdRoute);
     threads = await response.json();
     console.log(threads);
+
+    cardSpace.innerHTML = ``;
 
     for(let i = 0; i < threads.length; i++) {
         let threadID = threads[i].id;
@@ -51,6 +58,13 @@ async function buildBoard() {
                             <div class="offcanvas-body" id="${postCanvasName}">
                             
                             </div>
+                            <form class="">
+                            <div class="mb-3">
+                              <label for="postInput" class="form-label">Post</label>
+                              <input type="text" class="form-control" id="postInput" aria-describedby="">
+                            </div>
+                            <button type="submit" class="btn btn-success">Post Thread</button>
+                        </form>
                         </div>
             </div>
         </div>
@@ -73,7 +87,35 @@ async function buildBoard() {
        
     }
 
-    
 }
 
+async function postThread() {
+    
+    event.preventDefault();
+    const titleInput = document.getElementById('threadTitleInput').value;
+    const descriptionInput = document.getElementById('threadDescriptionInput').value;
+   
+    
+    const response = await fetch(baseRoute, {
+
+        method: 'POST',
+        headers: {
+			"Content-Type": "application/json",
+			"Accept": "application/json"
+		},
+        body: JSON.stringify({
+            title: titleInput,
+            thread_description: descriptionInput,
+            board_id: boardID,
+        }),
+
+    });
+    
+    console.log(response);
+    
+    buildBoard();
+};
+
 buildBoard();
+
+
