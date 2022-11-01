@@ -4,9 +4,11 @@ const baseRoute = 'http://localhost:3001/api/threads/'
 const postBaseRoute = 'http://localhost:3001/api/posts/'
 let boardIdRoute;
 let boardID;
+let threadIdArr = [];
+let postBtnArr = [];
 
 const threadPostBtn = document.getElementById('threadPostBtn');
-threadPostBtn.addEventListener('click', postThread)
+threadPostBtn.addEventListener('click', postThread);
 
 switch(boardName) {
 
@@ -26,8 +28,6 @@ switch(boardName) {
 }
 
 boardIdRoute = baseRoute + boardID;
-
-
 
 async function buildBoard() {
 
@@ -59,12 +59,12 @@ async function buildBoard() {
                             
                             </div>
                             <form class="">
-                            <div class="mb-3">
-                              <label for="postInput" class="form-label">Post</label>
-                              <input type="text" class="form-control" id="postInput" aria-describedby="">
-                            </div>
-                            <button type="submit" class="btn btn-success">Post Thread</button>
-                        </form>
+                                <div class="mb-3">
+                                    <label for="postInput" class="form-label">Post</label>
+                                    <input type="text" class="form-control" id="postInput${threadID}" aria-describedby="" title="${threadID}">
+                                </div>
+                                <button type="submit" class="btn btn-success" id="postBtn${threadID}">Post</button>
+                            </form>
                         </div>
             </div>
         </div>
@@ -84,13 +84,46 @@ async function buildBoard() {
             </div>
             `
         }
-       
-    }
 
+        let postBtn = document.getElementById('postBtn' + threadID);
+        console.log(postBtn);
+        postBtnArr[i] = postBtn;
+        threadIdArr[i] = threadID;
+        
+        /*
+        postBtn.addEventListener('click', function () {
+            console.log('arrived at function');
+            event.preventDefault();
+            let postInput = document.getElementById(('postInput'+threadID)).value;
+            console.log(postInput);
+            fetch(postBaseRoute, {
+        
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    post_content: postInput,
+                    thread_id: threadID,
+                }),
+        
+            });
+            
+            console.log(response);
+            
+            buildBoard();
+            
+        });
+        */
+        //eval('const' + 'postInput' + threadID + '=' + document.getElementById('postInput'+threadID) + ';');
+       // eval(postInput+threadID).addEventListener('click', addPost);
+    }
+    buildThreadsFuncs();
 }
 
 async function postThread() {
-    
+
     event.preventDefault();
     const titleInput = document.getElementById('threadTitleInput').value;
     const descriptionInput = document.getElementById('threadDescriptionInput').value;
@@ -116,6 +149,102 @@ async function postThread() {
     buildBoard();
 };
 
+async function addPost() {
+
+    event.preventDefault();
+    let postInput = document.getElementById(('postInput'+threadID)).value;
+    console.log(postInput);
+    fetch(postBaseRoute, {
+
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            post_content: postInput,
+            thread_id: threadID,
+        }),
+
+    });
+    
+    console.log(response);
+    
+    buildBoard();
+}
+/*
+async function buildThreadsFuncs() {
+
+    for(let k = 0; k < postBtnArr.length; k++) {
+        let threadID = threadIdArr[k];
+        let postBtn = postBtnArr[k];
+        postBtn.addEventListener('click', addPost);
+    }
+
+}
+*/
+
+async function buildThreadsFuncs() {
+
+    for(let k = 0; k < postBtnArr.length; k++) {
+        const threadID = threadIdArr[k];
+        const postBtn = postBtnArr[k];
+        postBtn.addEventListener('click', function () {
+            console.log('arrived at function');
+            event.preventDefault();
+            const postInput = document.getElementById(('postInput'+threadID)).value;
+            console.log(postInput);
+            const response = fetch(postBaseRoute, {
+        
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    post_content: postInput,
+                    thread_id: threadID,
+                }),
+        
+            });
+            
+            console.log(response);
+            
+            buildBoard();
+            
+        });
+    }
+
+}
+
 buildBoard();
-
-
+/*
+for(let k = 0; k < postBtnArr.length; k++) {
+    let threadID = threadIdArr[k];
+    let postBtn = postBtnArr[k];
+    postBtn.addEventListener('click', function () {
+        console.log('arrived at function');
+        event.preventDefault();
+        let postInput = document.getElementById(('postInput'+threadID)).value;
+        console.log(postInput);
+        fetch(postBaseRoute, {
+    
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                post_content: postInput,
+                thread_id: threadID,
+            }),
+    
+        });
+        
+        console.log(response);
+        
+        buildBoard();
+        
+    });
+}
+*/
