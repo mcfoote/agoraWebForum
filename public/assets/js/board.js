@@ -1,34 +1,38 @@
 const cardSpace = document.getElementById('cardSpace');
 const boardName = document.getElementById('boardTitle').innerHTML;
 const baseRoute = 'http://localhost:3001/api/threads/'
-let threadIdRoute;
+let boardIdRoute;
+let boardID;
 
 switch(boardName) {
 
     case '|Programming|':
-        threadIdRoute = baseRoute + '1';
+        boardID = 1;
         break;
     case '|Gaming|':
-        threadIdRoute = baseRoute + '2';
+        boardID = 2;
         break;
     case '|Music|':
-        threadIdRoute = baseRoute + '3';
+        boardID = 3;
         break;
     case '|Video|':
-        threadIdRoute = baseRoute + '4';
+        boardID = 4;
         break;
 
 }
+
+boardIdRoute = baseRoute + boardID;
 
 async function buildBoard() {
 
     let threads = [];
 
-    const response = await fetch(threadIdRoute);
+    const response = await fetch(boardIdRoute);
     threads = await response.json();
     console.log(threads);
 
     for(let i = 0; i < threads.length; i++) {
+        let threadID = threads[i].id;
         cardSpace.innerHTML +=`
        <div class="card text-bg-secondary m-3" style="width: 18rem;">
             <img src="" class="card-img-top" alt="Placeholder img">
@@ -38,7 +42,20 @@ async function buildBoard() {
                 <a href="#" class="btn btn-success">Open Thread</a>
             </div>
         </div>
-        `
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                </div>
+    
+            </div>
+        </div>
+        `;
+       
     }
 
     
