@@ -96,7 +96,7 @@ async function buildBoard() {
             event.preventDefault();
             let postInput = document.getElementById(('postInput'+threadID)).value;
             console.log(postInput);
-            fetch(postBaseRoute, {
+            let response = fetch(postBaseRoute, {
         
                 method: 'POST',
                 headers: {
@@ -120,6 +120,7 @@ async function buildBoard() {
        // eval(postInput+threadID).addEventListener('click', addPost);
     }
     buildThreadsFuncs();
+    //location.reload()
 }
 
 async function postThread() {
@@ -147,6 +148,7 @@ async function postThread() {
     console.log(response);
     
     buildBoard();
+    location.reload()
 };
 
 async function addPost() {
@@ -171,6 +173,7 @@ async function addPost() {
     console.log(response);
     
     buildBoard();
+    //location.reload()
 }
 /*
 async function buildThreadsFuncs() {
@@ -186,15 +189,22 @@ async function buildThreadsFuncs() {
 
 async function buildThreadsFuncs() {
 
+   // postBtnArr.map(addPost);
+
+    
     for(let k = 0; k < postBtnArr.length; k++) {
-        const threadID = threadIdArr[k];
-        const postBtn = postBtnArr[k];
+        let threadID = threadIdArr[k];
+        let postBtn = postBtnArr[k];
+        //eval('const' + 'postInput' + threadID + '=' + document.getElementById('postInput'+threadID) + ';');
+        //eval(postInput+threadID).addEventListener('click', addPost);
+        //postBtn.addEventListener('click', addPost);
+        
         postBtn.addEventListener('click', function () {
             console.log('arrived at function');
             event.preventDefault();
-            const postInput = document.getElementById(('postInput'+threadID)).value;
+            let postInput = document.getElementById(('postInput'+threadID)).value;
             console.log(postInput);
-            const response = fetch(postBaseRoute, {
+            let response = fetch(postBaseRoute, {
         
                 method: 'POST',
                 headers: {
@@ -205,17 +215,22 @@ async function buildThreadsFuncs() {
                     post_content: postInput,
                     thread_id: threadID,
                 }),
+                
         
             });
             
             console.log(response);
-            
-            buildBoard();
+            //location.reload()
+            //buildBoard();
             
         });
+        
     }
-
+    
+    //location.reload()
 }
+
+
 
 buildBoard();
 /*
