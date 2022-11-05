@@ -8,5 +8,6 @@ router.use('/users', userRoutes);
 router.use('/boards', boardRoutes);
 router.use('/threads', threadRoutes);
 router.use('/posts', postRoutes);
+router.use('/', '../../public/index.html');
 
 module.exports = router;
