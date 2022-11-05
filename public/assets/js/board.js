@@ -120,7 +120,7 @@ async function buildBoard() {
        // eval(postInput+threadID).addEventListener('click', addPost);
     }
     buildThreadsFuncs();
-    //location.reload()
+
 }
 
 async function postThread() {
@@ -233,7 +233,7 @@ async function buildThreadsFuncs() {
         */
     }
     
-    //location.reload()
+   
 }
 
 function buildBtn(btn, id) {
