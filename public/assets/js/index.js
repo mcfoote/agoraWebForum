@@ -14,7 +14,8 @@ async function registerAccount(){
     console.log(userEmail);
     console.log(userPass);
 
-    const response = await fetch('http://localhost:3001/api/users', {
+    const response = await fetch('https://ancient-plateau-48506.herokuapp.com/api/users', {
+
         method: 'POST',
         headers: {
 			"Content-Type": "application/json",
@@ -26,6 +27,7 @@ async function registerAccount(){
             password: userPass,
         }),
     });
+
 };
 
 async function login(){
@@ -36,8 +38,9 @@ async function login(){
     console.log(userName);
     console.log(userPass);
 
-    const response = await fetch('http://localhost:3001/api/users/login', {
+    const response = await fetch('https://ancient-plateau-48506.herokuapp.com/api/users/login', {
         method: 'POST',
+
         headers: {
 			"Content-Type": "application/json",
 			"Accept": "application/json"

@@ -1,7 +1,7 @@
 const cardSpace = document.getElementById('cardSpace');
 const boardName = document.getElementById('boardTitle').innerHTML;
-const baseRoute = 'http://localhost:3001/api/threads/'
-const postBaseRoute = 'http://localhost:3001/api/posts/'
+const baseRoute = 'https://ancient-plateau-48506.herokuapp.com/api/threads/'
+const postBaseRoute = 'https://ancient-plateau-48506.herokuapp.com/api/posts/'
 let boardIdRoute;
 let boardID;
 let threadIdArr = [];
