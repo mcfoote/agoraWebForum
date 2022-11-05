@@ -1,9 +1,9 @@
-// commented code was left in because I was unable to solve bug where only last in thread has working post button would appreciate insight.
+// commented code was left in because I was unable to solve bug where only last in thread has working post button would appreciate insight
 
 const cardSpace = document.getElementById('cardSpace');
 const boardName = document.getElementById('boardTitle').innerHTML;
-const baseRoute = 'https://ancient-plateau-48506.herokuapp.com/api/threads/'
-const postBaseRoute = 'https://ancient-plateau-48506.herokuapp.com/api/posts/'
+const baseRoute = 'http://localhost:3001/api/threads/'
+const postBaseRoute = 'http://localhost:3001/api/posts/'
 let boardIdRoute;
 let boardID;
 let threadIdArr = [];
