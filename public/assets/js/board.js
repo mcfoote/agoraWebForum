@@ -1,4 +1,3 @@
-// commented code was left in because I was unable to solve bug where only last in thread has working post button would appreciate insight
 
 const cardSpace = document.getElementById('cardSpace');
 const boardName = document.getElementById('boardTitle').innerHTML;
@@ -92,34 +91,7 @@ async function buildBoard() {
         postBtnArr[i] = postBtn;
         threadIdArr[i] = threadID;
         
-        /*
-        postBtn.addEventListener('click', function () {
-            console.log('arrived at function');
-            event.preventDefault();
-            let postInput = document.getElementById(('postInput'+threadID)).value;
-            console.log(postInput);
-            let response = fetch(postBaseRoute, {
-        
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    post_content: postInput,
-                    thread_id: threadID,
-                }),
-        
-            });
-            
-            console.log(response);
-            
-            buildBoard();
-            
-        });
-        */
-        //eval('const' + 'postInput' + threadID + '=' + document.getElementById('postInput'+threadID) + ';');
-       // eval(postInput+threadID).addEventListener('click', addPost);
+
     }
     buildThreadsFuncs();
 
@@ -175,23 +147,11 @@ async function addPost() {
     console.log(response);
     
     buildBoard();
-    //location.reload()
+   
 }
-/*
-async function buildThreadsFuncs() {
 
-    for(let k = 0; k < postBtnArr.length; k++) {
-        let threadID = threadIdArr[k];
-        let postBtn = postBtnArr[k];
-        postBtn.addEventListener('click', addPost);
-    }
-
-}
-*/
 
 async function buildThreadsFuncs() {
-
-   // postBtnArr.map(addPost);
     
    console.log(threadIdArr);
    console.log(postBtnArr);
@@ -205,34 +165,6 @@ async function buildThreadsFuncs() {
         console.log(thisPostBtn);
 
         buildBtn(thisPostBtn, thisThreadID);
-        //eval('const' + 'postInput' + threadID + '=' + document.getElementById('postInput'+threadID) + ';');
-        //eval(postInput+threadID).addEventListener('click', addPost);
-        //postBtn.addEventListener('click', addPost);
-        /*
-        postBtn.addEventListener('click', function () {
-            console.log('arrived at function');
-            event.preventDefault();
-            let postInput = document.getElementById(('postInput'+threadID)).value;
-            console.log(postInput);
-            let response = fetch(postBaseRoute, {
-        
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    post_content: postInput,
-                    thread_id: threadID,
-                }),
-                
-        
-            });
-            
-            console.log(response);
-            
-        });
-        */
     }
     
    
@@ -268,33 +200,4 @@ function buildBtn(btn, id) {
 
 
 buildBoard();
-/*
-for(let k = 0; k < postBtnArr.length; k++) {
-    let threadID = threadIdArr[k];
-    let postBtn = postBtnArr[k];
-    postBtn.addEventListener('click', function () {
-        console.log('arrived at function');
-        event.preventDefault();
-        let postInput = document.getElementById(('postInput'+threadID)).value;
-        console.log(postInput);
-        fetch(postBaseRoute, {
-    
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                post_content: postInput,
-                thread_id: threadID,
-            }),
-    
-        });
-        
-        console.log(response);
-        
-        buildBoard();
-        
-    });
-}
-*/
+
